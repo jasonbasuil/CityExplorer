@@ -1,0 +1,9 @@
+<h1> Create a New City </h1>
+
+<%= form_for @city do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label "State" %>
+  <%= f.text_field :state %>
+  <%= f.submit "Create City" %>
+<% end %>

@@ -1,0 +1,20 @@
+<h1> Edit a City </h1>
+
+<% if flash[:errors]%>
+  <% flash[:errors].each do |message|%>
+    <p style='color:red'><%= message%> </p>
+  <%end%>
+<%end%>
+
+<%if flash[:notice]%>
+  <%style='color:green'%>
+  <%= flash[:notice] %>
+<%end%>
+
+<%= form_for @city do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label "State" %>
+  <%= f.text_field :state %>
+  <%= f.submit "Edit City" %>
+<% end %>
