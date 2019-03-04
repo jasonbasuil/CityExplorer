@@ -6,11 +6,6 @@
   <%end%>
 <%end%>
 
-<%if flash[:notice]%>
-  <%style='color:green'%>
-  <%= flash[:notice] %>
-<%end%>
-
 <%= form_for @city do |f| %>
   <%= f.label "Name" %>
   <%= f.text_field :name %>

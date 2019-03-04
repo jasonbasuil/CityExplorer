@@ -1,3 +1,6 @@
-
+<%if flash[:notice]%>
+  <%style='color:green'%>
+  <%= flash[:notice] %>
+<%end%>
 <%= @user.name %>
 <%= @user.bio %>

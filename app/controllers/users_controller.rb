@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
   end
 
   def new
@@ -27,12 +28,23 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update(user_params)
+    if @user.valid?
+      flash[:notice] = "You have successfully updated your account."
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def delete
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :bio)

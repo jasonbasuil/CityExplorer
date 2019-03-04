@@ -1,11 +1,12 @@
 class CitiesController < ApplicationController
 
+  before_action :set_city, only: [:show, :edit, :update]
+
   def index
     @cities = City.all
   end
 
   def show
-    @city = City.find(params[:id])
   end
 
   def new
@@ -15,20 +16,19 @@ class CitiesController < ApplicationController
   def create
     @city = City.new(city_params)
     if @city.valid?
-      @city.save
+      flash[:notice] = "Your city was successfully created."
       redirect_to @city
     else
+      flash[:errors] = @city.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @city = City.find(params[:id])
   end
 
   def update
-    byebug
-    @city = City.update(city_params)
+    @city.update(city_params)
     if @city.valid?
       flash[:notice] = "Your city was successfully updated."
       redirect_to @city
@@ -41,6 +41,10 @@ class CitiesController < ApplicationController
   end
 
   private
+
+  def set_city
+    @city = City.find(params[:id])
+  end
 
   def city_params
     params.require(:city).permit(:name, :state)

@@ -1,1 +1,6 @@
 <h1><%=@city.name%></h1>
+
+<%if flash[:notice]%>
+  <%style= 'color:green'%>
+  <%= flash[:notice] %>
+<%end%>
