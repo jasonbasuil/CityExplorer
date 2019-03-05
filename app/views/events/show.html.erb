@@ -1,3 +1,4 @@
+
 <h1><%=@event.name%></h1>
 
 <p><%=@event.date.strftime('%B %d, %Y')%></p>
@@ -5,3 +6,5 @@
 <p><%=@event.time.strftime('%I:%M %p')%></p>
 
 <p><%= @event.description %></p>
+
+<p> <%= @event.host.name %></p>

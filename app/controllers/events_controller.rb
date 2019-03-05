@@ -14,7 +14,11 @@ class EventsController < ApplicationController
   end
 
   def create
+    #@host = User.find_by(params[:host_id])
     @event = Event.create(event_params)
+    @host = User.find_by(id: params[:event][:host_id])
+    @greeting = "HELLOO!!"
+    byebug
     if @event.valid?
       flash[:notice] = "Your event was successfully created."
       redirect_to @event
@@ -48,7 +52,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :time, :description, :address, :city_id)
+    params.require(:event).permit(:name, :date, :time, :description, :address, :city_id, :host_id)
   end
 
 end
