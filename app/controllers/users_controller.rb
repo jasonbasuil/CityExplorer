@@ -17,9 +17,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
-      @user.save
       redirect_to user_path(@user)
     else
+      flash[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
       flash[:notice] = "You have successfully updated your account."
       redirect_to @user
     else
+      flash[:errors] = @user.errors.full_messages
       render :edit
     end
   end

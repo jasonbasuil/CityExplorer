@@ -16,6 +16,7 @@ class CitiesController < ApplicationController
   def create
     @city = City.new(city_params)
     if @city.valid?
+      @city.save
       flash[:notice] = "Your city was successfully created."
       redirect_to @city
     else
@@ -33,6 +34,7 @@ class CitiesController < ApplicationController
       flash[:notice] = "Your city was successfully updated."
       redirect_to @city
     else
+      flash[:errors] = @city.errors.full_messages
       render :edit
     end
   end
