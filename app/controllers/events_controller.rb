@@ -14,9 +14,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.create(event_params)
     if @event.valid?
-      @event.save
       flash[:notice] = "Your event was successfully created."
       redirect_to @event
     else
@@ -29,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.update(event_params)
+    @event.update(event_params)
     if @event.valid?
       flash[:notice] = "Your event was successfully updated."
       redirect_to @event
