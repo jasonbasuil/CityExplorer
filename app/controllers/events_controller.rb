@@ -10,7 +10,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    if logged_in?
+      @event = Event.new
+    else
+      flash[:message] = "Please log in to create an event."
+      redirect_to login_path
+    end
   end
 
   def create

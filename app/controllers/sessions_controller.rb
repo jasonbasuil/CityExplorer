@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    #redirect_to "somewhere"
+    redirect_to root #'/homepage/index'
   end
 
 end

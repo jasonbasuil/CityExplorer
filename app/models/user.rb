@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :user_cities
   has_many :cities, through: :user_city
   has_many :rsvps, :foreign_key => :guest_id
