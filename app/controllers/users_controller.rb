@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  helper_method :find_hosted_events
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
@@ -7,10 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @current_user.id.to_i != params[:id].to_i
-      flash[:message] = "Sorry, can't access this page"
-      redirect_to user_path(@current_user)
-    end
+    # if @current_user.id.to_i != params[:id].to_i
+    #   redirect_to profile_path
+    # end
   end
 
   def new
@@ -47,8 +46,16 @@ class UsersController < ApplicationController
 
   private
 
+  def find_hosted_events
+    Event.all.select do |event|
+      if event.host_id == @current_user.id
+        event
+      end
+    end
+  end
+
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(@current_user.id)
   end
 
   def user_params
