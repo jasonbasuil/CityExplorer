@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_172128) do
+ActiveRecord::Schema.define(version: 2019_03_04_191659) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "state"
+    t.text "information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,10 +26,10 @@ ActiveRecord::Schema.define(version: 2019_03_05_172128) do
     t.date "date"
     t.time "time"
     t.text "description"
+    t.integer "host_id"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "city_id"
-    t.integer "host_id"
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -39,14 +40,18 @@ ActiveRecord::Schema.define(version: 2019_03_05_172128) do
   end
 
   create_table "user_cities", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "email"
-    t.text "bio"
+    t.string "password_digest"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

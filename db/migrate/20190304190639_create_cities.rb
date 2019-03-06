@@ -3,6 +3,7 @@ class CreateCities < ActiveRecord::Migration[5.2]
     create_table :cities do |t|
       t.string :name
       t.string :state
+      t.text :information
 
       t.timestamps
     end

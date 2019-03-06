@@ -2,5 +2,5 @@
   <%style='color:green'%>
   <%= flash[:notice] %>
 <%end%>
-<%= @user.name %>
-<%= @user.bio %>
+
+<h1>Hello, <%= @user.first_name %> <%= @user.last_name %>! This is your show page.</h1>

@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :hosted_events, :foreign_key => :host_id, :class_name => "Event"
 
 
-  validates :name, presence: true
+  validates :first_name, presence: true
   validates :email, uniqueness: true
 end
