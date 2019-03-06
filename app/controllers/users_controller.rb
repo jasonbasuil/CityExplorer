@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    #@user = User.find(params[:id])
+    if @current_user.id.to_i != params[:id].to_i
+      flash[:message] = "Sorry, can't access this page"
+      redirect_to user_path(@current_user)
+    end
   end
 
   def new

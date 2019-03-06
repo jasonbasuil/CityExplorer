@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @host = User.find_by(id: params[:event][:host_id])
     @greeting = "HELLOO!!"
-    byebug
     if @event.valid?
       flash[:notice] = "Your event was successfully created."
       redirect_to @event

@@ -5,4 +5,12 @@
 
 <h1>Hello, <%= @user.first_name %> <%= @user.last_name %>! This is your show page.</h1>
 
+<p> My Hosted Events </p>
+<% find_hosted_events.each do |event| %>
+  <li>
+    <%= event.name %>
+  </li>
+<% end %>
+
+
 <%= link_to "Edit Profile", edit_user_path(@user) %>

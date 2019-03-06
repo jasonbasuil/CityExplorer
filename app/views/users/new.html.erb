@@ -18,3 +18,5 @@
   <%= f.collection_select :city_id, City.all, :id, :name%>
   <%= f.submit "Create Account" %>
 <% end %>
+
+<h3>Already have an account? Login <%=link_to "here", login_path %></h3> 
