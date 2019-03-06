@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.valid?
       flash[:notice] = "You have successfully updated your account."
-      redirect_to @user
+      redirect_to '/profile'
     else
       flash[:errors] = @user.errors.full_messages
       render :edit
