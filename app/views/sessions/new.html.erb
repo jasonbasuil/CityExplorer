@@ -1,3 +1,7 @@
+<%if flash[:message]%>
+  <%style='color:green'%>
+  <%= flash[:message] %>
+<%end%>
 
 <h1>Login</h1>
 
@@ -13,4 +17,4 @@
   <%= submit_tag "Login" %>
 <%end%>
 
-<h3>Don't have an account? Sign up <%=link_to "here", new_user_path %></h3> 
+<h3>Don't have an account? Sign up <%=link_to "here", new_user_path %></h3>

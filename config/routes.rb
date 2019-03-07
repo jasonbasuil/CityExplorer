@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   resources :cities
   resources :rsvps
 
-  get '/login', to: 'sessions#new' 
+  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/login', to: 'sessions#destroy', as: :logout
+  
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
 

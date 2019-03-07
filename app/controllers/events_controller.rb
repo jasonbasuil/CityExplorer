@@ -3,9 +3,15 @@ class EventsController < ApplicationController
   before_action :find_event, only: [:show, :edit, :update, :delete]
 
   def index
-    @events = Event.all.select do |event|
-      event.city_id == @current_user.city_id
+    # @events = Event.all.select do |event|
+    #   event.city_id == @current_user.city_id
+    if city_events == []
+      @message = "There are currently no events in this city."
+    else
+      @events = city_events
     end
+    @city = current_user_city
+    byebug
   end
 
 
@@ -54,6 +60,19 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def city_events
+    Event.all.select do |event|
+      event.city_id == @current_user.city_id
+    end
+  end
+
+  def events_exitst?
+    if city_events == nil
+      return "There are not currently any events for this city"
+    end
+  end
+
 
   def find_event
     @event = Event.find(params[:id])
