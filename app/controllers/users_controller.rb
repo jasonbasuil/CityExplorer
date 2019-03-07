@@ -60,7 +60,15 @@ class UsersController < ApplicationController
         rsvp
       end
     end
-    #rsvps.all.each do |rsvp|
+    found_events = Event.all.select do |event|
+      if rsvps.find do |rsvp|
+        if event.id == rsvp.event_id
+          true
+        end 
+      end
+      end
+    end
+    byebug
   end
 
   def set_user

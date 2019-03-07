@@ -6,7 +6,7 @@ class RsvpsController < ApplicationController
   def create
     Rsvp.create(rsvp_params)
     flash[:message] = "Successfully RSVP'd for this event."
-    redirect_to events_path
+    redirect_to @current_user
   end
 
 
