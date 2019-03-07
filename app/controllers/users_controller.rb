@@ -58,8 +58,9 @@ class UsersController < ApplicationController
     rsvps = find_current_user_rsvps
     events = []
     Event.all.each do |event|
-      rsvps.find {|rsvp| event.id == rsvp.event_id}
+      if rsvps.find {|rsvp| event.id == rsvp.event_id}
         events << event
+      end
     end
     return events
   end
