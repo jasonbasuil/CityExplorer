@@ -16,5 +16,7 @@
   <%= f.label "password" %>
   <%= f.password_field :password %>
   <%= f.collection_select :city_id, City.all, :id, :name%>
+  <%= f.label "Profile Photo" %>
+  <%= f.file_field :avatar %>
   <%= f.submit "Update Account" %>
 <% end %>

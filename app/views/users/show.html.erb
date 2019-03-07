@@ -5,12 +5,24 @@
 
 <h1>Hello, <%= @user.first_name %> <%= @user.last_name %>! This is your show page.</h1>
 
-<p> My Hosted Events </p>
+<% if @user.avatar.attached? %>
+  <image src='<%=(url_for(@user.avatar))%>'>
+<%end%>
+
+<h3> My Hosted Events </h3>
 <% find_hosted_events.each do |event| %>
   <li>
     <%= event.name %>
   </li>
 <% end %>
+
+<h3> Events I'm Attending </h3>
+<% find_attended_events.each do |event| %>
+  <li>
+    <%= event.event_id %>
+  </li>
+<% end %>
+
 
 
 <%= link_to "Edit Profile", 'profile/edit' %>

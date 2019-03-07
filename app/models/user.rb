@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :rsvps, :foreign_key => :guest_id
   has_many :attended_events, through: :rsvps, :source => :event
   has_many :hosted_events, :foreign_key => :host_id, :class_name => "Event"
+  has_one_attached :avatar
 
 
   validates :first_name, presence: true

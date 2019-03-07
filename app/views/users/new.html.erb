@@ -16,7 +16,10 @@
   <%= f.label "password" %>
   <%= f.password_field :password %>
   <%= f.collection_select :city_id, City.all, :id, :name%>
+  <%= f.label "Profile Photo" %>
+  <%= f.file_field :avatar %>
+
   <%= f.submit "Create Account" %>
 <% end %>
 
-<h3>Already have an account? Login <%=link_to "here", login_path %></h3> 
+<h3>Already have an account? Login <%=link_to "here", login_path %></h3>

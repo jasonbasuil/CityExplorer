@@ -3,10 +3,14 @@ class EventsController < ApplicationController
   before_action :find_event, only: [:show, :edit, :update, :delete]
 
   def index
-    @events = Event.all
+    @events = Event.all.select do |event|
+      event.city_id == @current_user.city_id
+    end
   end
 
+
   def show
+    @rsvp = Rsvp.new
   end
 
   def new

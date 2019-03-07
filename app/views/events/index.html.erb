@@ -1,5 +1,6 @@
-<h1>Events</h1>
+
+<h1>Events in <%= @events.first.city.name %></h1>
 
 <% @events.each do |event|%>
-  <%=link_to event.name, event%>
+  <li><%=link_to event.name, event%></li>
 <%end%>

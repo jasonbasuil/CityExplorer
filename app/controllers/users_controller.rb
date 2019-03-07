@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  helper_method :find_hosted_events
+  helper_method :find_hosted_events, :find_attended_events
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
@@ -54,12 +54,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def find_attended_events
+    rsvps = Rsvp.all.select do |rsvp|
+      if rsvp.guest_id == @current_user.id
+        rsvp
+      end
+    end
+    #rsvps.all.each do |rsvp|
+  end
+
   def set_user
     @user = User.find(@current_user.id)
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :city_id)
+    params.require(:user).permit(:avatar, :first_name, :last_name, :email, :password, :city_id)
   end
 
 end
