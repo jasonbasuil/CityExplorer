@@ -1,6 +1,14 @@
 
-<h1>Events in <%= @events.first.city.name %></h1>
+<h1>Events in <%= @city.name %></h1>
 
-<% @events.each do |event|%>
-  <li><%=link_to event.name, event%></li>
+<% if @events != nil %>
+  <% @events.each do |event|%>
+    <li><%=link_to event.name, event%></li>
+  <%end%>
+<%else %>
+  <p> <%= @message %> </p>
 <%end%>
+
+
+<br>
+<%= link_to "Return to Profile", @current_user%>

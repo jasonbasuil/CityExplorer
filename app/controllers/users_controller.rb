@@ -55,20 +55,21 @@ class UsersController < ApplicationController
   end
 
   def find_attended_events
-    rsvps = Rsvp.all.select do |rsvp|
+    rsvps = find_current_user_rsvps
+    events = []
+    Event.all.each do |event|
+      rsvps.find {|rsvp| event.id == rsvp.event_id}
+        events << event
+    end
+    return events
+  end
+
+  def find_current_user_rsvps
+    Rsvp.all.select do |rsvp|
       if rsvp.guest_id == @current_user.id
         rsvp
       end
     end
-    found_events = Event.all.select do |event|
-      if rsvps.find do |rsvp|
-        if event.id == rsvp.event_id
-          true
-        end 
-      end
-      end
-    end
-    byebug
   end
 
   def set_user
