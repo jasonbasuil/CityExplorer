@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :guests, :through => :rsvps, :source => :user
   belongs_to :city
   belongs_to :host, :class_name => "User"
+  has_one_attached :avatar
 
 
   validates :name, presence: true

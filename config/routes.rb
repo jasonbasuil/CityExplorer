@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/login', to: 'sessions#destroy', as: :logout
-  
+
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
 
   get '/events/home', to: 'users#home'
+  #delete '/events', to: 'events#destroy', as: :delete_event
 
   root 'homepage#index'
 

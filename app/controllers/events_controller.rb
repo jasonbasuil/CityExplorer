@@ -1,17 +1,14 @@
 class EventsController < ApplicationController
 
-  before_action :find_event, only: [:show, :edit, :update, :delete]
+  before_action :find_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @events = Event.all.select do |event|
-    #   event.city_id == @current_user.city_id
     if city_events == []
       @message = "There are currently no events in this city."
     else
       @events = city_events
     end
     @city = current_user_city
-    byebug
   end
 
 
@@ -29,10 +26,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    #@host = User.find_by(params[:host_id])
     @event = Event.create(event_params)
     @host = User.find_by(id: params[:event][:host_id])
-    @greeting = "HELLOO!!"
     if @event.valid?
       flash[:notice] = "Your event was successfully created."
       redirect_to @event
@@ -56,7 +51,9 @@ class EventsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @event.destroy
+    redirect_to @current_user
   end
 
   private
@@ -67,19 +64,19 @@ class EventsController < ApplicationController
     end
   end
 
-  def events_exitst?
-    if city_events == nil
-      return "There are not currently any events for this city"
-    end
-  end
-
-
   def find_event
     @event = Event.find(params[:id])
   end
 
   def event_params
-    params.require(:event).permit(:name, :date, :time, :description, :address, :city_id, :host_id)
+    params.require(:event).permit(:avatar, :name, :date, :time, :description, :address, :city_id, :host_id)
   end
+
+  # def find_attendees
+  #   attendees = []
+  #   Users.all.each do |user|
+  #     user.id == @event.guests
+  #   end
+  # end
 
 end
