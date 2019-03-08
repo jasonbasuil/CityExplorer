@@ -1,6 +1,26 @@
+<!-- <img src="https://www.heritageschoolofinteriordesign.com/main/wp-content/uploads/2018/05/103845788-_sites-default-files-images-103845788-GettyImages-155735310.1910x1000.jpg" alt="Seattle Skyline"/>
+<%= image_tag("seattle.jpg", :alt => "seattle") %> -->
 
-<h1>Events in <%= @city.name %></h1>
+<header>
+  <div class="overlay"></div>
+  <img src="https://www.heritageschoolofinteriordesign.com/main/wp-content/uploads/2018/05/103845788-_sites-default-files-images-103845788-GettyImages-155735310.1910x1000.jpg" alt="Seattle Skyline"/>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">hey.></h1>
+        <p class="lead mb-0">this is seattle.</p>
+      </div>
+    </div>
+  </div>
+</header>
 
+<br>
+
+<div class="title">
+  <h1>Events in <%= @city.name %></h1>
+</div>
+
+<div class="sub_title">
 <% if @events != nil %>
   <% @events.each do |event|%>
     <li><%=link_to event.name, event%></li>
@@ -8,7 +28,26 @@
 <%else %>
   <p> <%= @message %> </p>
 <%end%>
+</div>
 
 
 <br>
 <%= link_to "Return to Profile", @current_user%>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+  <a class="navbar-brand" href="/">Logo</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">My Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/events">Events</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid"><br>
+  <h3>Bottom Fixed Navbar</h3>
+  <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>
+  <h1>Scroll this page to see the effect</h1>
+</div>

@@ -1,23 +1,39 @@
 <h1>Create an Event!</h1>
 
+<div class="sub_title">
 <%= form_for @event do |f|%>
-  <%= f.label :name%>
-  <%= f.text_field :name%>
-  <%= f.label :date%>
-  <%= f.date_select(:date)%>
-  <%= f.label :time%>
-  <%= f.time_select(:time)%>
-  <%= f.label :address%>
-  <%= f.text_field :address%>
-  <%= f.label "City"%>
-  <%= f.collection_select :city_id, City.all, :id, :name%>
-  <%= f.label :description%>
-  <%= f.text_area :description%>
-  <%= f.label "Event Photo" %>
-  <%= f.file_field :avatar %>
 
-  <%= f.hidden_field :host_id, :value => @current_user.id %>
+  <div class="row">
+    <div class="col-sm-3">
+    <div class="form_fields_right"
+      <br><br>
+      <%= f.label "Event Name"%><br>
+      <%= f.label :date%><br>
+      <%= f.label :time%><br>
+      <%= f.label :address%><br>
+      <%= f.label "City"%><br>
+      <%= f.label :description%><br><br>
+      <%= f.label "Event Photo" %><br>
+    </div>
+    </div>
 
+    <div class="col-sm-3">
+    <div class="form_fields_left">
+      <br><br>
+      <%= f.text_field :name%><br><br>
+      <%= f.date_select(:date)%><br><br>
+      <%= f.time_select(:time)%><br><br>
+      <%= f.text_field :address%><br><br>
+      <%= f.collection_select :city_id, City.all, :id, :name%><br><br>
+      <%= f.text_area :description%><br><br>
+      <%= f.file_field :avatar %><br><br>
+      <%= f.hidden_field :host_id, :value => @current_user.id %><br>
+      <%=f.submit%>
+    </div>
+    </div>
+    <%end%>
 
-  <%=f.submit%>
-<%end%>
+    <div class="col-sm-4">
+      hello, this is a third column.
+    </div>
+  </div>
