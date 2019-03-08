@@ -1,31 +1,70 @@
 
-<h1><%= @event.name%></h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="center">
+      <div class="padding">
 
-<% if @event.avatar.attached? %>
-  <image src='<%=(url_for(@event.avatar))%>'>
-<%end%>
+    <h1><%= @event.name%></h1>
 
-<p><%= @event.date.strftime('%B %d, %Y')%></p>
+    <br><p>Hosted by: <b><%= @event.host.first_name %> <%= @event.host.last_name %></b></p>
 
-<p><%= @event.time.strftime('%I:%M %p')%></p>
+    <p>This event will take place on <b><%= @event.date.strftime('%B %d, %Y')%></b> at <b><%= @event.time.strftime('%I:%M %p')%></b>.</p>
 
-<p><%= @event.description %></p>
+    <p>Location: <b><%= @event.address%></b></p>
 
-<p><%= @event.host.first_name %></p>
-
-
-
+    <p><%= @event.description %></p>
 
 
 
-<%= form_for @rsvp do |f| %>
-    <%= f.hidden_field :guest_id, :value => @current_user.id %>
-    <%= f.hidden_field :event_id, :value => @event.id %>
-    <%= f.submit "RSVP" %>
-<%end%>
+    <%= form_for @rsvp do |f| %>
+        <%= f.hidden_field :guest_id, :value => @current_user.id %>
+        <%= f.hidden_field :event_id, :value => @event.id %>
+        <%= f.submit "RSVP" %>
+    <%end%>
+
+    <br>
+    <% if @event.host_id == @current_user.id %>
+      <a class="button" href="/events/<%=@event.id%>" data-method="delete" role="button">
+        Delete This Event
+      </a>
+      <a class="button" href="/events/<%=@event.id%>/edit" role="button">
+        Edit This Event
+      </a>
+    <%end%>
+
+  </div>
+  </div>
+  </div>
+
+
+  <div class="col-sm-5">
+    <div class="center">
+    <br><br>
+    <% if @event.avatar.attached? %>
+      <image src='<%=(url_for(@event.avatar))%>'class="rounded" style="display:inline"  height="300">
+    <%end%>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+  <a class="navbar-brand" href="/"><img src="https://i.ibb.co/2sJQTNR/Logo-Makr-39-Xboe.png" alt="Logo-Makr-39-Xboe" border="0" height="40"></a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">My Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/events">Events</a>
+    </li>
+  </ul>
+</nav>
+
 
 <br>
-<%=link_to "Return to All Events", events_path%>
-<% if @event.host_id == @current_user.id %>
-  <%=link_to "Delete Event", event_path(@event), method: 'DELETE' %>
-<%end%>
+<br>
+<br>
+<br>

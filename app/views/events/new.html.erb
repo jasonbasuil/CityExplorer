@@ -1,24 +1,74 @@
-<h1>Create an Event!</h1>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="center">
+      <h1>Create an Event!</h1>
+    </div>
+  </div>
+</div>
 
+<div class="sub_title">
 <%= form_for @event do |f|%>
-  <%= f.label :name%>
-  <%= f.text_field :name%>
-  <%= f.label :date%>
-  <%= f.date_select(:date)%>
-  <%= f.label :time%>
-  <%= f.time_select(:time)%>
-  <%= f.label :address%>
-  <%= f.text_field :address%>
-  <%= f.label "City"%>
-  <%= f.collection_select :city_id, City.all, :id, :name%>
-  <%= f.label :description%>
-  <%= f.text_area :description%>
-  <%= f.label "Event Photo" %>
-  <%= f.file_field :avatar %>
 
-  <%= f.hidden_field :host_id, :value => @current_user.id %>
+  <div class="row">
+    <div class="col-sm-3">
+    <div class="form_fields_right"
+      <br><br>
+      <%= f.label "Event Name"%><br>
+      <%= f.label :date%><br>
+      <%= f.label :time%><br>
+      <%= f.label :address%><br>
+      <%= f.label "City"%><br>
+      <%= f.label :description%><br><br>
+      <%= f.label "Event Photo" %><br>
+    </div>
+    </div>
 
+    <div class="col-sm-3">
+    <div class="form_fields_left">
+      <br><br>
+      <%= f.text_field :name%><br><br>
+      <%= f.date_select(:date)%><br><br>
+      <%= f.time_select(:time)%><br><br>
+      <%= f.text_field :address%><br><br>
+      <%= f.collection_select :city_id, City.all, :id, :name%><br><br>
+      <%= f.text_area :description%><br><br>
+      <%= f.file_field :avatar %><br><br>
+      <%= f.hidden_field :host_id, :value => @current_user.id %><br>
+      <%= f.submit%>
+    </div>
+    </div>
+    <%end%>
 
+<<<<<<< HEAD
   <%=f.submit%>
   <iframe src="https://player.vimeo.com/video/178433501?autoplay=1&color=fdfdfd&portrait=0&badge=0" width="640" height="272" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <%end%>
+=======
+    <div class="col-sm-4">
+      This is the third column.
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+    <a class="navbar-brand" href="/"><img src="https://i.ibb.co/2sJQTNR/Logo-Makr-39-Xboe.png" alt="Logo-Makr-39-Xboe" border="0" height="40"></a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Events</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid"><br>
+    
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+>>>>>>> 337b5c773274d373dcf0744a39ed9a18e52a4cd8

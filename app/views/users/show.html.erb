@@ -2,38 +2,105 @@
   <%style='color:green'%>
   <%= flash[:notice] %>
 <%end%>
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">Welcome back, <%= @user.first_name %></h1>
+        <p class="lead mb-0">We missed you.</p>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h2>Hello, <%= @user.first_name %>!</h2>
-<p>Welcome back to your profile</p>
 
-<div>
-<% if @user.avatar.attached? %>
-  <image src='<%=(url_for(@user.avatar))%>', height='140'>
-<%end%>
-</div><br>
 
-<h6> My Hosted Events </h6>
-<% find_hosted_events.each do |event| %>
-  <li>
-    <%= link_to event.name, event %>
-  </li>
-<% end %>
-<br>
-<h6> Events I'm Attending </h6>
-<% find_attended_events.each do |event| %>
-  <li>
-    <%= link_to event.name, event %>
-  </li>
-<% end %>
 
 <br>
-<%= link_to "Browse Events", '/events' %>
+<h2 class="title">Check out local events</h2>
+<p class="sub_title">Link at the bottom of the page.</p>
 <br>
-<%= link_to "Edit Profile", 'profile/edit' %>
 <br>
-<div class='button'>
-  <%= link_to 'Create Event', new_event_path %>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="center">
+      <% if @user.avatar.attached? %>
+      <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="display:inline"  height="250">
+      <%end%>
+      <p style="font-size:40px"><%=@user.first_name%> <%=@user.last_name%></p>
+      Current city: <%=@user.city_id%>
+
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="center">
+      <h4> Events You are Scheduled to Attend </h4>
+      <% find_attended_events.each do |event| %>
+        <li>
+          <%= link_to event.name, event %>
+        </li>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-sm-3">
+    <h6> My Hosted Events </h6>
+    <% find_hosted_events.each do |event| %>
+      <li>
+        <%= link_to event.name, event %>
+      </li>
+    <% end %>
+  </div>
 </div>
-<div class='button'>
-  <%= link_to 'Logout', logout_path, method: 'DELETE' %>
+---
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="center">
+      <a class="button" href="profile/edit" role="button">
+        Edit Profile
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="center">
+      there.
+    </div>
+
+  </div>
+  <div class="col-sm-3">
+    <a class="button" href="events/new" role="button">
+      Host New Event
+    </a>
+  </div>
 </div>
+
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+  <a class="navbar-brand" href="/"><img src="https://i.ibb.co/2sJQTNR/Logo-Makr-39-Xboe.png" alt="Logo-Makr-39-Xboe" border="0" height="40"></a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">My Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/events">Events</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid"><br>
+  <h3>CityExplorer</h3>
+  <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>
+  <h1>Scroll this page to see the effect</h1>
+</div>
+<br>
+<br>
+<br>
+<br>
