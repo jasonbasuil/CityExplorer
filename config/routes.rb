@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/users/new', to: 'sessions#new'
   post '/users/new', to: 'sessions#create'
-  
+
   delete '/login', to: 'sessions#destroy', as: :logout
+  delete '/logout', to: 'sessions#destroy'
 
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'

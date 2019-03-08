@@ -7,16 +7,17 @@
 <%end%>
 
 <%= form_for @user do |f| %>
-  <%= f.label "First Name" %>
-  <%= f.text_field :first_name %>
-  <%= f.label "Last Name" %>
-  <%= f.text_field :last_name %>
-  <%= f.label "Email" %>
-  <%= f.text_field :email %>
-  <%= f.label "password" %>
-  <%= f.password_field :password %>
-  <%= f.collection_select :city_id, City.all, :id, :name%>
-  <%= f.label "Profile Photo" %>
-  <%= f.file_field :avatar %>
-  <%= f.submit "Update Account" %>
+  <%= f.label "First Name" %><br>
+  <%= f.text_field :first_name %><br>
+  <%= f.label "Last Name" %><br>
+  <%= f.text_field :last_name %><br>
+  <%= f.label "Email" %><br>
+  <%= f.text_field :email %><br>
+  <%= f.label "Password" %><br>
+  <%= f.password_field :password %><br>
+  <%= f.label "City" %><br>
+  <%= f.collection_select :city_id, City.all, :id, :name%><br>
+  <%= f.label "Profile Photo" %><br>
+  <%= f.file_field :avatar %><br><br>
+  <%= f.submit "Update Account" %><br>
 <% end %>

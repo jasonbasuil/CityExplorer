@@ -3,20 +3,23 @@
   <%= flash[:notice] %>
 <%end%>
 
-<h1>Hello, <%= @user.first_name %> <%= @user.last_name %>! This is your show page.</h1>
+<h2>Hello, <%= @user.first_name %>!</h2>
+<p>Welcome back to your profile</p>
 
+<div>
 <% if @user.avatar.attached? %>
-  <image src='<%=(url_for(@user.avatar))%>'>
+  <image src='<%=(url_for(@user.avatar))%>', height='140'>
 <%end%>
+</div><br>
 
-<h3> My Hosted Events </h3>
+<h6> My Hosted Events </h6>
 <% find_hosted_events.each do |event| %>
   <li>
     <%= link_to event.name, event %>
   </li>
 <% end %>
-
-<h3> Events I'm Attending </h3>
+<br>
+<h6> Events I'm Attending </h6>
 <% find_attended_events.each do |event| %>
   <li>
     <%= link_to event.name, event %>
