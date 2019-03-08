@@ -1,4 +1,11 @@
-<h1>Create an Event!</h1>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="center">
+      <h1>Create an Event!</h1>
+    </div>
+  </div>
+</div>
 
 <div class="sub_title">
 <%= form_for @event do |f|%>
@@ -28,7 +35,7 @@
       <%= f.text_area :description%><br><br>
       <%= f.file_field :avatar %><br><br>
       <%= f.hidden_field :host_id, :value => @current_user.id %><br>
-      <%=f.submit%>
+      <%= f.submit%>
     </div>
     </div>
     <%end%>
@@ -37,3 +44,15 @@
       hello, this is a third column.
     </div>
   </div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
+    <a class="navbar-brand" href="/"><img src="https://i.ibb.co/2sJQTNR/Logo-Makr-39-Xboe.png" alt="Logo-Makr-39-Xboe" border="0" height="40"></a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Events</a>
+      </li>
+    </ul>
+  </nav>
