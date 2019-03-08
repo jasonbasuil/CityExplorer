@@ -1,20 +1,16 @@
-<%if flash[:message]%>
-  <%style='color:green'%>
-  <%= flash[:message] %>
-<%end%>
 
-<h1>Login</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="center">
+      <h1>Login</h1>
+      <br>
+      <%= form_tag login_path do %>
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
 
-<% if flash[:message] %>
-  <p><%= flash[:message] %></p>
-<%end%>
-
-<%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<%end%>
-
+        <%= submit_tag "Login" %>
+      <%end%>
+<br><br>
 <h3>Don't have an account? Sign up <%=link_to "here", new_user_path %></h3>
