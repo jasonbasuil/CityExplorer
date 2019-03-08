@@ -1,20 +1,50 @@
-<h1>Update your Event!</h1>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="center">
+      <h1>Update Your Event</h1>
+    </div>
+  </div>
+</div>
 
-<%= form_for(@event) do |f|%>
-  <%= f.label :name%>
-  <%= f.text_field :name%>
-  <%= f.label :date%>
-  <%= f.date_select(:date)%>
-  <%= f.label :time%>
-  <%= f.time_select(:time)%>
-  <%= f.label :address%>
-  <%= f.text_field :address%>
-  <%=f.label "City"%>
-  <%= f.collection_select :city_id, City.all, :id, :name%>
-  <%= f.label :description%>
-  <%= f.text_area :description%>
-  <%=f.submit%>
-<%end%>
+<div class="sub_title">
+<%= form_for @event do |f|%>
+
+  <div class="row">
+    <div class="col-sm-3">
+    <div class="form_fields_right"
+      <br><br>
+      <%= f.label "Event Name"%><br>
+      <%= f.label :date%><br>
+      <%= f.label :time%><br>
+      <%= f.label :address%><br>
+      <%= f.label "City"%><br>
+      <%= f.label :description%><br><br>
+      <%= f.label "Event Photo" %><br>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="form_fields_left">
+      <br><br>
+      <%= f.text_field :name%><br><br>
+      <%= f.date_select(:date)%><br><br>
+      <%= f.time_select(:time)%><br><br>
+      <%= f.text_field :address%><br><br>
+      <%= f.collection_select :city_id, City.all, :id, :name%><br><br>
+      <%= f.text_area :description%><br><br>
+      <%= f.file_field :avatar %><br><br>
+      <%= f.hidden_field :host_id, :value => @current_user.id %><br>
+      <%= f.submit%>
+    </div>
+    </div>
+    <%end%>
+
+    <div class="col-sm-4">
+      This is the third column.
+    </div>
+  </div>
+
 
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
@@ -29,5 +59,10 @@
   </ul>
 </nav>
 
-
+<div class="container-fluid"><br>
+  
+</div>
+<br>
+<br>
+<br>
 <br>

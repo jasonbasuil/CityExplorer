@@ -26,9 +26,13 @@
 <%end%>
 
 <br>
-<%=link_to "Return to All Events", events_path%>
 <% if @event.host_id == @current_user.id %>
-  <%=link_to "Delete Event", event_path(@event), method: 'DELETE' %>
+  <a class="button" href="/events/<%=@event.id%>" data-method="delete" role="button">
+    Delete This Event
+  </a>
+  <a class="button" href="/events/<%=@event.id%>/edit" role="button">
+    Edit This Event
+  </a>
 <%end%>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
