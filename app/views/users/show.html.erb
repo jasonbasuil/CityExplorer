@@ -1,7 +1,4 @@
-<%if flash[:notice]%>
-  <%style='color:green'%>
-  <%= flash[:notice] %>
-<%end%>
+
 <header>
   <div class="overlay"></div>
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -32,54 +29,39 @@
       <image src="<%=(url_for(@user.avatar))%>" class="rounded-circle" style="display:inline"  height="250">
       <%end%>
       <p style="font-size:40px"><%=@user.first_name%> <%=@user.last_name%></p>
-      Current city: <%=@user.city_id%>
+      <a class="button" href="profile/edit" role="button">
+        Edit Profile
+      </a>
 
     </div>
   </div>
 
   <div class="col-sm-6">
     <div class="center">
-      <h4> Events You are Scheduled to Attend </h4>
+      <h2> Events You are Scheduled to Attend </h2>
+      <div class="list_main">
+
       <% find_attended_events.each do |event| %>
         <li>
-          <%= link_to event.name, event %>
+          <%= link_to event.name, event %> (<%=event.date.strftime('%B %d, %Y')%>)
         </li>
       <% end %>
+    </div>
     </div>
 
   </div>
   <div class="col-sm-3">
-    <h6> My Hosted Events </h6>
+    <div class="list_side">
+    <h4> My Hosted Events </h4>
     <% find_hosted_events.each do |event| %>
       <li>
         <%= link_to event.name, event %>
       </li>
     <% end %>
-  </div>
-</div>
----
-
-<div class="row">
-  <div class="col-sm-3">
-    <div class="center">
-      <a class="button" href="profile/edit" role="button">
-        Edit Profile
-      </a>
     </div>
   </div>
-
-  <div class="col-sm-6">
-    <div class="center">
-      there.
-    </div>
-
-  </div>
-  <div class="col-sm-3">
-    <a class="button" href="events/new" role="button">
-      Host New Event
-    </a>
-  </div>
 </div>
+
 
 
 
@@ -93,12 +75,15 @@
       <a class="nav-link" href="/events">Events</a>
     </li>
   </ul>
+  <div style="padding-left: 950px;">
+    <a class="button" href="/events/new" role="button">
+    Host New Event
+    </a>
+  </div>
 </nav>
 
 <div class="container-fluid"><br>
-  <h3>CityExplorer</h3>
-  <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>
-  <h1>Scroll this page to see the effect</h1>
+
 </div>
 <br>
 <br>

@@ -4,6 +4,7 @@
 <header>
   <div class="overlay"></div>
   <img src="https://www.heritageschoolofinteriordesign.com/main/wp-content/uploads/2018/05/103845788-_sites-default-files-images-103845788-GettyImages-155735310.1910x1000.jpg" alt="Seattle Skyline"/>
+
   <div class="container h-100">
     <div class="d-flex h-100 text-center align-items-center">
       <div class="w-100 text-white">
@@ -23,7 +24,10 @@
 <div class="sub_title">
 <% if @events != nil %>
   <% @events.each do |event|%>
-    <li><%=link_to event.name, event%></li>
+    <li>
+      <%=link_to event.name, event%>
+      (<%=event.date.strftime('%B %d, %Y')%> at <%=event.time.strftime('%I:%M %p')%>)
+    </li>
   <%end%>
 <%else %>
   <p> <%= @message %> </p>
@@ -32,7 +36,6 @@
 
 
 <br>
-<%= link_to "Return to Profile", @current_user%>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
   <a class="navbar-brand" href="/"><img src="https://i.ibb.co/2sJQTNR/Logo-Makr-39-Xboe.png" alt="Logo-Makr-39-Xboe" border="0" height="40"></a>
@@ -44,13 +47,15 @@
       <a class="nav-link" href="/events">Events</a>
     </li>
   </ul>
+  <div style="padding-left: 950px;">
+    <a class="button" href="/events/new" role="button">
+    Host New Event
+    </a>
+  </div>
 </nav>
 
 <div class="container-fluid"><br>
-  <h3>CityExplorer</h3>
-  <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>
-  <h1>Scroll this page to see the effect</h1>
-</div>
+  </div>
 <br>
 <br>
 <br>

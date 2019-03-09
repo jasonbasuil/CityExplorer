@@ -30,7 +30,10 @@
   <h1 class="display-4">Welcome to CityExplorer</h1>
   <p class="lead">Find events in your city and meet new friends!</p>
   <hr class="my-4">
-  <a class="button" href="/users/new" role="button">Sign Up</a>
-  <a class="button" href="/login" role="button">Login</a>
 
-  
+  <%if !@current_user%>
+    <a class="button" href="/users/new" role="button">Sign Up</a>
+    <a class="button" href="/login" role="button">Login</a>
+  <%else%>
+    <a class="button" href="/profile" role="button"> My Profile</a>
+  <%end%>
