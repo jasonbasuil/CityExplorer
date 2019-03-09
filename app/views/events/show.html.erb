@@ -32,6 +32,13 @@
       </a>
     <%end%>
 
+    <% if @rsvps.find {|rsvp| @current_user.id == rsvp.guest_id} %>
+
+    <% else%>
+      
+    <%end%>
+
+
   </div>
   </div>
   </div>

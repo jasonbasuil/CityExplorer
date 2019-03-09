@@ -14,6 +14,8 @@ class EventsController < ApplicationController
 
   def show
     @rsvp = Rsvp.new
+    @rsvps = Rsvp.all
+    #byebug corresponds to lines 37-39 in show page
   end
 
   def new

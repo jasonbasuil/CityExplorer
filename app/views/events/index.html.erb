@@ -4,6 +4,7 @@
 <header>
   <div class="overlay"></div>
   <img src="https://www.heritageschoolofinteriordesign.com/main/wp-content/uploads/2018/05/103845788-_sites-default-files-images-103845788-GettyImages-155735310.1910x1000.jpg" alt="Seattle Skyline"/>
+
   <div class="container h-100">
     <div class="d-flex h-100 text-center align-items-center">
       <div class="w-100 text-white">
@@ -23,7 +24,10 @@
 <div class="sub_title">
 <% if @events != nil %>
   <% @events.each do |event|%>
-    <li><%=link_to event.name, event%></li>
+    <li>
+      <%=link_to event.name, event%>
+      (<%=event.date.strftime('%B %d, %Y')%> at <%=event.time.strftime('%I:%M %p')%>)
+    </li>
   <%end%>
 <%else %>
   <p> <%= @message %> </p>
