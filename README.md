@@ -1,6 +1,6 @@
 # City Explorer
 
-Search for different events, save your favorites, and make purchases through Ticketmaster
+Create new events, search for events to attend, and view all the attendees for your events. 
 
 ## Installation
 
