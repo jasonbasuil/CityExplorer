@@ -2,6 +2,8 @@
 
 Create new events, search for events to attend, and view all the attendees for your events. 
 
+![](https://media.giphy.com/media/oycZTBTyDMrDtb1VkW/giphy.gif)
+
 ## Installation
 
 Run 'bundle install' to install required gems.
